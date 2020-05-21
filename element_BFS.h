@@ -2,15 +2,23 @@
 #define _ELEMENT
 #include <stdio.h>
 #include <stdlib.h>
+#include "e_sommet.h"
 
-typedef int element_t;
-#define ELEMENT_COMPARE(e1,e2)  (*(e1)>*(e2) ? 1 : *(e1)==*(e2) ? 0 : -1)
-#define ELEMENT_EQUAL(e1,e2)  (*(e1)==*(e2))
+typedef vertex_t element_t;
 
 void element_print (element_t e);
-element_t element_empty();
+/*element_t element_empty();
 int element_is_empty(element_t e);
-int element_equal(element_t*, element_t*);
-int element_compare(element_t*, element_t*);
+*/
+
+/* ne prend pas en compte les pcc
+ */
+int element_equal(element_t* e0_pt, element_t* e1_pt);
+
+/* element_compare retourne 1 si e0_pt->0 > e1->pcc
+ * 							-1 si e1_pt->1 > e0->pcc
+ * 							0 sinon
+ */
+int element_compare(element_t* e0_pt, element_t* e1_pt);
 
 #endif

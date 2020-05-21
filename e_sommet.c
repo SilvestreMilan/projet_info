@@ -41,7 +41,7 @@ int empty_sommet(vertex_t sommet){
 }
 
 void print_sommet(vertex_t sommet){
-    printf(" %d %lg %lg %s %s\n", sommet.numero, sommet.x, sommet.y, sommet.ligne, sommet.nom);
+    printf(" %d %lg %lg %s %s pcc = %lg\n", sommet.numero, sommet.x, sommet.y, sommet.ligne, sommet.nom, sommet.pcc);
     return;
 
 }

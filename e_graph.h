@@ -37,8 +37,8 @@ typedef struct{
     char nom[512];        // nom du sommet
     char ligne[128];        // uniquement pour le metro
     double x, y;        // latitude et longitude (pour graphique)
-    listedge_t edges;    // listes des arc qui partent de ce sommet
     double  pcc;        // "plus court chemin" entre sommet de depart et ce sommet
+    listedge_t edges;    // listes des arc qui partent de ce sommet
                 // utile que dans l'algorithme
 } vertex_t;
 #endif

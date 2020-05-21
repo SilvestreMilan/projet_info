@@ -1,4 +1,4 @@
-#include "heap.h"
+#include "heap_BFS.h"
 
 heap_t heap_new(int m) {
   heap_t tas;
@@ -103,8 +103,8 @@ void heap_print(heap_t tas) {
 int heap_verification(heap_t tas) {
   int i;
   for (i=0; i< tas.number/2; i++) {
-  if (ELEMENT_COMPARE(tas.data+i,tas.data+HEAP_LEFTSON(i))<0) return i;
-    if (HEAP_RIGHTSON(i)<tas.number && tas.data[i]<tas.data[HEAP_RIGHTSON(i)]) return i;
+  if (element_compare(tas.data+i,tas.data+HEAP_LEFTSON(i))<0) return i;
+    if (HEAP_RIGHTSON(i)<tas.number && (element_compare(tas.data+i,tas.data+HEAP_RIGHTSON(i)) == -1)) return i;
   }
   return -1;
 }
