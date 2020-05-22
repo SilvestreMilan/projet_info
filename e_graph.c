@@ -174,7 +174,7 @@ void graph_print(graph_t* g){
     for(i = 0; i<size_vertex; i++){
     		print_sommet(g->data[i]);
     		}
-    for(i = 0; i<size_edges; i++) list_print_edge(g->data[i].edges);
+    for(i = 0; i<size_vertex; i++) list_print_edge(g->data[i].edges);
 
     return;
 }
