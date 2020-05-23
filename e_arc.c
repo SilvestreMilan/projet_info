@@ -1,3 +1,4 @@
+
 //
 //  e_arc.c
 //  Projet d'info
@@ -40,6 +41,10 @@ listedge_t list_new_edge() {
 int list_is_empty_edge(listedge_t l) {
   return NIL == l;
 }
+edge_t list_first_edge(listedge_t l){
+  assert(!list_is_empty_edge(l));
+  return l->val;
+}
 
 listedge_t list_add_first_edge( edge_t e, listedge_t l ) {
   listedge_t p = calloc( 1, sizeof( *p ) );
@@ -61,13 +66,25 @@ int est_dans_list_edge(listedge_t liste, edge_t element){
     }
     return 0;
 }
+listedge_t list_copy_edge(listedge_t l) {
+    listedge_t c,copy;
+    edge_t clone = creer_arc();
+    copy=list_new_edge();
+    for (c=l; !list_is_empty_edge(c); c=c->next){
+        clone.depart =c->val.depart;
+        clone.arrivee = c->val.arrivee;
+        clone.cout = c->val.cout;
+        copy = list_add_first_edge(clone, copy);
+    }
+  return copy;
+}
 
 // Precondition : liste non vide
 listedge_t list_del_first_edge( listedge_t l ) {
   assert(!list_is_empty_edge(l));
   //element_delete(l->val);
   listedge_t p = l->next;
-  free( l );
+  free(l);
   return p;
 }
 
@@ -84,7 +101,7 @@ void list_print_edge(listedge_t l) {
 int list_length_edge(listedge_t l) {
   int len = 0;
   listedge_t p;
-  for( p=l; ! list_is_empty_edge(p) ; p=p->next ) {
+  for( p=l; !list_is_empty_edge(p) ; p=p->next ) {
     len ++;
   }
   return len;
@@ -113,11 +130,10 @@ listedge_t trouver_arc_voisin(vertex_t sommet1, vertex_t sommet2, int* nb_arc){
     listedge_t liste_arc = list_new_edge();
     int j=0;
     for (int i=0;i< list_length_edge(sommet1.edges); i++){
-        if(!est_dans_list_edge(liste_arc,sommet1.edges[i].val)){
-            list_add_first_edge(sommet1.edges[i].val, liste_arc);
+        if(sommet1.edges[i].val.arrivee == sommet2.numero){
+            liste_arc = list_add_first_edge(sommet1.edges[i].val, liste_arc);
             j++;
         }
-
     }
     *nb_arc = j;
     return liste_arc;

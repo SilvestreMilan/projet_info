@@ -1,3 +1,4 @@
+
 // Etant donne le sujet, on suppose qu'il existe en amont de la chaine de traitement des donnees un algorithme(essai)
 // de mise en forme des donnees ou le format du fichier est celui precise par l'enonce. C'est pourquoi les
 // fonctions ci-dessous sont specifique a ce format.
@@ -7,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 
 
 
@@ -37,9 +39,10 @@ typedef struct{
     char nom[512];        // nom du sommet
     char ligne[128];        // uniquement pour le metro
     double x, y;        // latitude et longitude (pour graphique)
-    double  pcc;        // "plus court chemin" entre sommet de depart et ce sommet
     listedge_t edges;    // listes des arc qui partent de ce sommet
-                // utile que dans l'algorithme
+    double  pcc;        // "plus court chemin" entre sommet de depart et ce sommet
+            // utile que dans l'algorithme
+    int pere; // correspond au numero du sommet pere. Utile pour DFS
 } vertex_t;
 #endif
 
@@ -82,4 +85,4 @@ graph_t* graph_creation(char* file_name);
 // A partir d'ici les fonctions sont specifiques au traitement d'un graphe
 
 // Fonction qui affiche un graphe
-void graph_print(graph_t*);
+void graph_print(graph_t* g);

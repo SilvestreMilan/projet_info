@@ -41,8 +41,8 @@ listedge_t list_new_edge(void);
 
 // Retourne VRAI si l est une liste vide
 int list_is_empty_edge(listedge_t l);
-
-
+edge_t list_first_edge(listedge_t l);
+listedge_t list_copy_edge(listedge_t l);
 // Retourne le reste de la liste
 // PRECONDITION : liste non vide
 listedge_t list_next_edge(listedge_t l);
@@ -67,7 +67,6 @@ void print_arc(edge_t arc);
 
 //trouve tous les arcs entre deux sommets, les places dans une liste et renvoie cette liste
 listedge_t trouver_arc_voisin(vertex_t sommet1, vertex_t sommet2, int* nb_arc);
-
 
 
 
